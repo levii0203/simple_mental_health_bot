@@ -36,7 +36,7 @@ human_role = HumanMessagePromptTemplate.from_template(
 )
 
 chat_input = ChatPromptTemplate.from_messages([system_role,human_role])
-\
+
 Summarizer_Chain = (
     chat_input
     | llm

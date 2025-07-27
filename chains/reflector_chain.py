@@ -1,14 +1,8 @@
-from dotenv import load_dotenv
-from pydantic import BaseModel,Field
 from langchain_groq import ChatGroq
 from langchain.prompts import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
 
-
+from dotenv import load_dotenv
 load_dotenv()
-
-'''class ReflectorResponse(BaseModel):
-    """Always use this tool to structure your response to the user."""
-    reflection: str = Field(description="This is your response here")'''
 
 
 llm = ChatGroq (
@@ -41,6 +35,7 @@ human_role = HumanMessagePromptTemplate.from_template(
 
 chat_input = ChatPromptTemplate.from_messages([system_role,human_role])
 
+#Chain for reflecting back generator's response with a review
 Reflective_Chain = (
     chat_input
     | llm
